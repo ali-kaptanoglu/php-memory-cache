@@ -42,3 +42,18 @@ if (!shmop_delete($shm_id)) {
 }
 shmop_close($shm_id);
 
+##A fast read-only memory mapped hash-table for PHP
+
+  $data = array(
+        'key1' => 'value1',
+        'key2' => 'value2',
+        // ...
+  );
+  chdb_create('data.chdb', $data);
+
+
+Then at run-time, the keys stored in the file can be read by:
+  $chdb = new chdb('data.chdb');
+  $value1 = $chdb->get('key1');
+  $value2 = $chdb->get('key2');
+
